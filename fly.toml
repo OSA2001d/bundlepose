@@ -1,0 +1,27 @@
+# Fly.io configuration for the bouquet composer app.
+# Single machine + SQLite on a mounted volume (single-writer constraint).
+app = "webmcp-bouquet"
+primary_region = "nrt"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "3000"
+  # SQLite lives on the mounted volume so sessions survive deploys.
+  DATABASE_URL = "file:/data/prod.sqlite"
+
+[mounts]
+  source = "data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"

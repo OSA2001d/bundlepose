@@ -1,0 +1,54 @@
+---
+config:
+  theme: base
+  flowchart:
+    nodeSpacing: 40
+    rankSpacing: 70
+  themeVariables:
+    primaryColor: "#fffdf4"
+    primaryBorderColor: "#cbb988"
+    primaryTextColor: "#23271c"
+    lineColor: "#23271c"
+    clusterBkg: "#f7f4ea"
+    clusterBorder: "#cbb988"
+    edgeLabelBackground: "#fffdf4"
+    fontFamily: "Helvetica Neue, Arial, sans-serif"
+    fontSize: "15px"
+---
+flowchart LR
+  subgraph Browser["🛍 Shopper's browser — storefront page"]
+    direction TB
+    Shopper["👤 Shopper"]
+    Agent["🤖 AI agent<br/>(ChatGPT · Work mode)"]
+    subgraph TAE["Theme App Extension (app embed)"]
+      direction TB
+      Panel["🌸 Composer panel"]
+      Draft[("Shared draft<br/>localStorage")]
+      Tools["11 bouquet_* WebMCP tools<br/>document.modelContext"]
+    end
+    Std["Shopify standard tools<br/>get_cart · proceed_to_checkout"]
+  end
+
+  subgraph Fly["☁️ App server (Fly.io)"]
+    Proxy["App Proxy<br/>/apps/composer/*<br/>(signed, same-origin)"]
+  end
+
+  subgraph Shopify["🛒 Shopify"]
+    direction TB
+    Admin["Admin GraphQL API<br/>catalog + composer.* metafields<br/>(meanings, roles, pet-safe)"]
+    Cart["Cart<br/>lines tagged _bundle_id"]
+    CT["Cart Transform Function<br/>(Rust → WASM)"]
+    Checkout["Checkout<br/>1 bouquet = 1 nested line"]
+  end
+
+  Shopper -->|"② compose by hand"| Panel
+  Agent -->|"① propose"| Tools
+  Panel <--> Draft
+  Tools <--> Draft
+  Tools -->|"catalog fetch"| Proxy
+  Proxy --> Admin
+  Tools -->|"bouquet_commit<br/>Shopify.actions.updateCart"| Cart
+  Cart --> CT
+  CT -->|"③ LinesMerge<br/>price = sum of parts"| Checkout
+  Agent -.->|"handoff via next_steps"| Std
+  Std -.-> Checkout

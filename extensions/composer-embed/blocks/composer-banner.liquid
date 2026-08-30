@@ -1,0 +1,101 @@
+{% comment %}
+  App block: composer banner (design 3d "order ticket").
+  A copyable sample prompt is the hero — judges and shoppers can copy it and
+  hand it to their agent. Placed on the home page (or any section) via the
+  theme editor.
+{% endcomment %}
+
+{{ 'composer-banner.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'composer-banner.js' | asset_url }}" defer></script>
+
+<div class="bqb" {{ block.shopify_attributes }}>
+  <div class="bqb-main">
+    {% if block.settings.badge != blank %}
+      <span class="bqb-badge">{{ block.settings.badge | escape }}</span>
+    {% endif %}
+    {% if block.settings.title != blank %}
+      <h2 class="bqb-title">{{ block.settings.title | escape }}</h2>
+    {% endif %}
+    {% if block.settings.subtitle != blank %}
+      <p class="bqb-subtitle">{{ block.settings.subtitle | escape }}</p>
+    {% endif %}
+    <div class="bqb-kicker">{{ block.settings.kicker | escape }}</div>
+    <div class="bqb-ticket">
+      <div class="bqb-prompt" data-bqb-prompt>&quot;{{ block.settings.prompt | escape }}&quot;</div>
+      <div class="bqb-ticket-foot">
+        <span class="bqb-caption">{{ block.settings.caption | escape }}</span>
+        <button type="button" class="bqb-copy" data-bqb-copy>Copy</button>
+      </div>
+    </div>
+    {% assign guide_link = block.settings.link | default: '/apps/composer/guide' %}
+    <a class="bqb-link" href="{{ guide_link }}">{{ block.settings.link_label | escape }}</a>
+  </div>
+  <div class="bqb-photo">
+    {% if block.settings.image %}
+      {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', alt: block.settings.image.alt | default: 'Bouquet' }}
+    {% else %}
+      <img src="{{ 'banner-bouquet-bench.jpeg' | asset_url }}" alt="A kraft-wrapped bouquet on the florist's workbench" loading="lazy">
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Composer Banner",
+  "target": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge",
+      "default": "A NEW WAY TO BUY"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Build a bouquet together with your AI agent."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "The agent proposes, you compose — one bouquet, one line in the cart."
+    },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "TRY IT — COPY, THEN ASK YOUR AGENT"
+    },
+    {
+      "type": "textarea",
+      "id": "prompt",
+      "label": "Sample prompt",
+      "default": "Make a warm-toned bouquet for my mother's 60th birthday, under $40."
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption",
+      "default": "the composer fills, within budget"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Guide link"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Guide link label",
+      "default": "See how it works"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Photo"
+    }
+  ]
+}
+{% endschema %}

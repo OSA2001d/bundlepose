@@ -1,0 +1,22 @@
+query CartTransformRunInput {
+  cartTransform {
+    config: metafield(namespace: "$app:bouquet", key: "config") {
+      value
+    }
+  }
+  cart {
+    lines {
+      id
+      quantity
+      bundleId: attribute(key: "_bundle_id") {
+        value
+      }
+      bundleName: attribute(key: "_bundle_name") {
+        value
+      }
+      cardMessage: attribute(key: "_card_message") {
+        value
+      }
+    }
+  }
+}

@@ -1,0 +1,132 @@
+/* Horizon lays section blocks out with a shrink-to-fit, left-aligned flex
+   wrapper; stretch our wrapper so the banner's auto margins can center it. */
+.shopify-app-block:has(> .bqb) {
+  width: 100%;
+}
+.bqb {
+  font-family: system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #23271c;
+  background: #e7d9b2;
+  /* Fluid: fills whatever container the theme section provides. */
+  padding: clamp(18px, 3vw, 36px) clamp(16px, 4vw, 48px);
+  display: flex;
+  gap: clamp(16px, 3vw, 40px);
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  width: 100%;
+  /* On very wide screens, cap and center the whole banner. */
+  max-width: 1240px;
+  margin-inline: auto;
+  box-sizing: border-box;
+}
+.bqb-main {
+  flex: 1;
+  min-width: 0;
+  /* Grows with the banner; capped so a line of prompt stays scannable. */
+  max-width: 960px;
+}
+.bqb-badge {
+  display: inline-block;
+  font: 600 10px ui-monospace, Menlo, monospace;
+  letter-spacing: 0.12em;
+  background: #fffdf4;
+  border: 1px solid #cbb988;
+  color: #6e6142;
+  padding: 5px 9px;
+  border-radius: 999px;
+}
+.bqb-title {
+  font: 600 clamp(18px, 2.2vw, 27px) / 1.3 system-ui, sans-serif;
+  color: #23271c;
+  margin: 9px 0 0;
+}
+.bqb-subtitle {
+  font: 400 clamp(12px, 1.2vw, 15px) / 1.55 system-ui, sans-serif;
+  color: #6e6142;
+  margin: 6px 0 0;
+}
+.bqb-kicker {
+  font: 600 10px ui-monospace, Menlo, monospace;
+  letter-spacing: 0.16em;
+  color: #6e6142;
+  margin-top: 14px;
+}
+.bqb-ticket {
+  background: #fffdf4;
+  border: 1px solid #cbb988;
+  box-shadow: 2px 3px 0 rgba(35, 39, 28, 0.12);
+  padding: clamp(12px, 1.6vw, 20px) clamp(14px, 2vw, 24px);
+  margin-top: 10px;
+  transform: rotate(-0.8deg);
+}
+.bqb-prompt {
+  font: 500 clamp(12px, 1.5vw, 19px) / 1.5 ui-monospace, Menlo, monospace;
+}
+.bqb-ticket-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 9px;
+}
+.bqb-caption {
+  font: 400 10.5px/1.4 system-ui, sans-serif;
+  color: #8a7d55;
+}
+.bqb-copy {
+  font: 600 clamp(11.5px, 1.1vw, 13.5px) / 1 system-ui, sans-serif;
+  background: #23271c;
+  color: #f4f1ea;
+  padding: 9px 13px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  flex: none;
+}
+.bqb-copy.copied {
+  background: #fffdf4;
+  color: #23271c;
+  border: 1.5px solid #23271c;
+}
+.bqb-link {
+  display: inline-block;
+  font: 600 12.5px/1 system-ui, sans-serif;
+  color: #23271c;
+  margin-top: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.bqb-photo {
+  width: clamp(140px, 19vw, 280px);
+  height: clamp(140px, 19vw, 280px);
+  flex: none;
+  border-radius: 12px;
+  background: repeating-linear-gradient(45deg, #eae2cc 0 8px, #f1ebd9 8px 16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(1deg);
+  border: 1px solid #cbb988;
+  overflow: hidden;
+}
+.bqb-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.bqb-photo-placeholder {
+  font-size: 40px;
+  opacity: 0.5;
+}
+@media (max-width: 600px) {
+  .bqb {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+  .bqb-photo {
+    width: 100%;
+    height: 120px;
+    transform: none;
+  }
+}

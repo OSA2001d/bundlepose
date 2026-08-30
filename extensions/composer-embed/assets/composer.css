@@ -1,0 +1,277 @@
+#bouquet-composer-root {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  font-family: system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #1a1a1a;
+}
+#bouquet-composer-root .bqc-toggle {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: #1a1a1a;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+#bouquet-composer-root .bqc-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #e2b93b;
+  color: #1a1a1a;
+  font: 700 10px/1 system-ui, sans-serif;
+  padding: 3px 6px;
+  border-radius: 999px;
+}
+#bouquet-composer-root .bqc-panel {
+  position: absolute;
+  right: 0;
+  bottom: 64px;
+  width: 360px;
+  max-height: 72vh;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+  padding: 16px;
+}
+#bouquet-composer-root .bqc-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#bouquet-composer-root .bqc-head strong {
+  font: 600 15px/1 system-ui, sans-serif;
+}
+#bouquet-composer-root .bqc-close {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  background: #fff;
+  font: 400 13px/1 system-ui, sans-serif;
+  cursor: pointer;
+}
+#bouquet-composer-root .bqc-tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+#bouquet-composer-root .bqc-tab {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font: 500 11.5px/1 system-ui, sans-serif;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: #fff;
+  color: #555;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+#bouquet-composer-root .bqc-tab.active {
+  font-weight: 600;
+  background: #1a1a1a;
+  border-color: #1a1a1a;
+  color: #fff;
+}
+#bouquet-composer-root .bqc-tab-badge {
+  font: 600 9.5px/1 system-ui, sans-serif;
+  background: #f2c24d;
+  color: #1a1a1a;
+  padding: 3px 6px;
+  border-radius: 999px;
+}
+#bouquet-composer-root .bqc-rows {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+}
+#bouquet-composer-root .bqc-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+#bouquet-composer-root .bqc-row.bqc-added,
+#bouquet-composer-root .bqc-row.bqc-changed {
+  padding: 10px 8px;
+  margin: 0 -8px;
+  border-bottom: none;
+  border-radius: 10px;
+}
+#bouquet-composer-root .bqc-row.bqc-added {
+  background: #eff7f1;
+}
+#bouquet-composer-root .bqc-row.bqc-changed {
+  background: #fff6de;
+}
+#bouquet-composer-root .bqc-row-main {
+  flex: 1;
+  min-width: 0;
+}
+#bouquet-composer-root .bqc-row-title {
+  font: 400 13px/1.3 system-ui, sans-serif;
+  display: block;
+}
+#bouquet-composer-root .bqc-meaning {
+  display: block;
+  font: 400 10px/1.4 system-ui, sans-serif;
+  color: #9a9a9a;
+  font-style: italic;
+}
+#bouquet-composer-root .bqc-diff-note {
+  display: block;
+  font: 600 10px/1.4 system-ui, sans-serif;
+}
+#bouquet-composer-root .bqc-green {
+  color: #0e7a3d;
+}
+#bouquet-composer-root .bqc-amber {
+  color: #8a6d1f;
+  font-weight: 500;
+}
+#bouquet-composer-root .bqc-red {
+  color: #b42318;
+}
+#bouquet-composer-root .bqc-strike {
+  color: #9a9a9a;
+  text-decoration: line-through;
+}
+#bouquet-composer-root .bqc-strike-price {
+  color: #c9c9c9;
+  text-decoration: line-through;
+}
+#bouquet-composer-root .bqc-restore {
+  border: none;
+  background: none;
+  font: 600 11.5px/1 system-ui, sans-serif;
+  color: #000f9f;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  padding: 0;
+}
+#bouquet-composer-root .bqc-qty {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 999px;
+  background: #fff;
+}
+#bouquet-composer-root .bqc-qty button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  font: 500 14px/1 system-ui, sans-serif;
+  cursor: pointer;
+}
+#bouquet-composer-root .bqc-qty b {
+  width: 18px;
+  text-align: center;
+  font: 600 12px/1 system-ui, sans-serif;
+}
+#bouquet-composer-root .bqc-price {
+  font: 500 12px/1 system-ui, sans-serif;
+  width: 48px;
+  text-align: right;
+}
+#bouquet-composer-root .bqc-wrap-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+#bouquet-composer-root .bqc-wrap-label {
+  font: 500 12px/1 system-ui, sans-serif;
+  color: #6b6b6b;
+}
+#bouquet-composer-root .bqc-wrap {
+  flex: 1;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font: 400 12.5px/1 system-ui, sans-serif;
+  background: #fff;
+}
+#bouquet-composer-root .bqc-note {
+  background: #f6f3ee;
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin: 10px 0 0;
+  font: 400 12px/1.5 system-ui, sans-serif;
+}
+#bouquet-composer-root .bqc-budget {
+  margin-top: 14px;
+}
+#bouquet-composer-root .bqc-budget-bar {
+  height: 6px;
+  border-radius: 99px;
+  background: #ededed;
+  overflow: hidden;
+}
+#bouquet-composer-root .bqc-budget-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+  background: #1a1a1a;
+}
+#bouquet-composer-root .bqc-budget-bar span.over {
+  background: #b42318;
+}
+#bouquet-composer-root .bqc-budget small {
+  display: block;
+  font: 400 11px/1.4 system-ui, sans-serif;
+  color: #6b6b6b;
+  margin-top: 6px;
+}
+#bouquet-composer-root .bqc-violations {
+  color: #b42318;
+  font: 400 11.5px/1.5 system-ui, sans-serif;
+  padding-left: 18px;
+  margin: 8px 0 0;
+}
+#bouquet-composer-root .bqc-commit {
+  display: block;
+  width: 100%;
+  font: 600 13.5px/1 system-ui, sans-serif;
+  background: #1a1a1a;
+  color: #fff;
+  padding: 14px;
+  text-align: center;
+  border: none;
+  border-radius: 999px;
+  margin-top: 12px;
+  cursor: pointer;
+}
+#bouquet-composer-root .bqc-commit:disabled {
+  background: #9aa89f;
+  cursor: default;
+}
+#bouquet-composer-root .bqc-revert {
+  display: block;
+  width: 100%;
+  border: none;
+  background: none;
+  font: 500 11.5px/1 system-ui, sans-serif;
+  color: #6b6b6b;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-align: center;
+  margin-top: 10px;
+  cursor: pointer;
+}
+#bouquet-composer-root .bqc-empty {
+  color: #777;
+  margin: 8px 0;
+  font: 400 12px/1.5 system-ui, sans-serif;
+}

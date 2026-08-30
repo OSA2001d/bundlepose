@@ -1,0 +1,41 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+#
+# Placeholders: run `shopify app config link` to generate your own client_id and URLs,
+# or replace FILL_YOUR_CLIENT_ID / FILL_YOUR_APP_URL by hand.
+
+client_id = "FILL_YOUR_CLIENT_ID"
+name = "Bundlepose"
+application_url = "https://FILL_YOUR_APP_URL"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products,write_inventory,read_locations,read_publications,write_publications,write_cart_transforms"
+
+[webhooks]
+api_version = "2026-10"
+
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/app/uninstalled"
+  topics = [ "app/uninstalled" ]
+
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/app/scopes_update"
+  topics = [ "app/scopes_update" ]
+
+[app_proxy]
+url = "https://FILL_YOUR_APP_URL/api/proxy"
+subpath = "composer"
+prefix = "apps"
+
+[auth]
+redirect_urls = [
+  "https://FILL_YOUR_APP_URL/auth/callback",
+  "https://FILL_YOUR_APP_URL/auth/login",
+  "https://FILL_YOUR_APP_URL/api/auth"
+]
+
+[build]
+# Production URLs are pinned: `shopify app dev` must not rewrite them.
+# For local development against your own dev store, set this to true.
+automatically_update_urls_on_dev = false

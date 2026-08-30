@@ -1,0 +1,107 @@
+{
+  "payload": {
+    "export": "cart_transform_run",
+    "target": "cart.transform.run",
+    "input": {
+      "cartTransform": {
+        "config": {
+          "value": "{\"templates\":{\"bouquet\":\"gid://shopify/ProductVariant/111\"}}"
+        }
+      },
+      "cart": {
+        "lines": [
+          {
+            "id": "gid://shopify/CartLine/1",
+            "quantity": 3,
+            "bundleId": {
+              "value": "b1"
+            },
+            "bundleName": {
+              "value": "Warm Birthday Bouquet"
+            },
+            "cardMessage": null
+          },
+          {
+            "id": "gid://shopify/CartLine/2",
+            "quantity": 1,
+            "bundleId": {
+              "value": "b1"
+            },
+            "bundleName": {
+              "value": "Warm Birthday Bouquet"
+            },
+            "cardMessage": null
+          },
+          {
+            "id": "gid://shopify/CartLine/3",
+            "quantity": 2,
+            "bundleId": {
+              "value": "b2"
+            },
+            "bundleName": null,
+            "cardMessage": null
+          },
+          {
+            "id": "gid://shopify/CartLine/4",
+            "quantity": 1,
+            "bundleId": null,
+            "bundleName": null,
+            "cardMessage": null
+          }
+        ]
+      }
+    },
+    "output": {
+      "operations": [
+        {
+          "linesMerge": {
+            "cartLines": [
+              {
+                "cartLineId": "gid://shopify/CartLine/1",
+                "quantity": 3
+              },
+              {
+                "cartLineId": "gid://shopify/CartLine/2",
+                "quantity": 1
+              }
+            ],
+            "parentVariantId": "gid://shopify/ProductVariant/111",
+            "title": "Warm Birthday Bouquet",
+            "attributes": [
+              {
+                "key": "_bundle_id",
+                "value": "b1"
+              },
+              {
+                "key": "Bouquet",
+                "value": "Warm Birthday Bouquet"
+              }
+            ]
+          }
+        },
+        {
+          "linesMerge": {
+            "cartLines": [
+              {
+                "cartLineId": "gid://shopify/CartLine/3",
+                "quantity": 2
+              }
+            ],
+            "parentVariantId": "gid://shopify/ProductVariant/111",
+            "title": "Custom Bouquet",
+            "attributes": [
+              {
+                "key": "_bundle_id",
+                "value": "b2"
+              },
+              {
+                "key": "Bouquet",
+                "value": "Custom Bouquet"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

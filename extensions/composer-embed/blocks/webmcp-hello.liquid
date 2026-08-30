@@ -1,0 +1,18 @@
+{% comment %}
+  App embed block: Bouquet Composer.
+  Registers the bouquet_* WebMCP tools and renders the composer panel on
+  every storefront page. Loaded at the top-level document (required — ChatGPT's
+  browser does not detect tools registered inside iframes).
+  (File keeps its original name so the theme-editor embed toggle stays on.)
+{% endcomment %}
+
+{{ 'composer.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'composer.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Bouquet Composer",
+  "target": "body",
+  "settings": []
+}
+{% endschema %}

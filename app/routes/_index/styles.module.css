@@ -1,0 +1,96 @@
+/* Shell + countdown only. The revealed landing page ships its own styles
+   from content.server.ts so nothing about it leaks into the client bundle. */
+
+/* The template's root has no CSS reset, so the default body margin shows up
+   as a white frame around the page. Scoped to this route's stylesheet. */
+:global(html),
+:global(body) {
+  margin: 0;
+  padding: 0;
+  background: #f4f1ea;
+}
+
+.page {
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 20px 64px;
+  background: #f4f1ea;
+  color: #23271c;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.card {
+  width: 100%;
+  max-width: 780px;
+}
+
+.badge {
+  display: inline-block;
+  font:
+    600 10px ui-monospace,
+    Menlo,
+    monospace;
+  letter-spacing: 0.12em;
+  background: #fffdf4;
+  border: 1px solid #cbb988;
+  color: #6e6142;
+  padding: 5px 9px;
+  border-radius: 999px;
+}
+
+.heading {
+  font-size: clamp(26px, 4vw, 36px);
+  line-height: 1.2;
+  font-weight: 700;
+  margin: 14px 0 0;
+}
+
+.lede {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #4a462f;
+  margin: 12px 0 0;
+}
+
+.clock {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.unit {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 72px;
+}
+
+.unitValue {
+  font:
+    700 clamp(30px, 5vw, 44px) / 1 ui-monospace,
+    Menlo,
+    monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.unitLabel {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6e6142;
+}
+
+.placeholder {
+  display: block;
+  height: 52px;
+}
