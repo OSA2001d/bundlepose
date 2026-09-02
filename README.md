@@ -8,12 +8,12 @@ custom bouquet — on the same storefront page, and a Cart Transform Function tu
 
 Built for [The WebMCP Challenge](https://webmcp.devpost.com/) (2026).
 
-|                               |                                                                       |
-| ----------------------------- | --------------------------------------------------------------------- |
-| 🌸 Live demo store            | https://webmcp-challenge-by-meefa.myshopify.com (password: `mfmcp26`) |
-| 📖 Judge's guide (start here) | https://webmcp-challenge-by-meefa.myshopify.com/apps/composer/guide   |
-| 🏠 Landing page               | https://webmcp-bouquet.fly.dev                                        |
-| 🎬 Demo video                 | https://youtu.be/zhql_cqvycw                                          |
+|                               |                                                                      |
+| ----------------------------- | -------------------------------------------------------------------- |
+| 🌸 Live demo store            | https://webmcp-challenge-by-meefa.myshopify.com (password-protected) |
+| 📖 Judge's guide (start here) | https://webmcp-challenge-by-meefa.myshopify.com/apps/composer/guide  |
+| 🏠 Landing page               | https://webmcp-bouquet.fly.dev                                       |
+| 🎬 Demo video                 | https://youtu.be/zhql_cqvycw                                         |
 
 ## How it works
 
@@ -100,7 +100,8 @@ components). Missing config = no-op, so checkout never breaks.
 
 ## Try it
 
-The store is password-protected: **`mfmcp26`**.
+The store is password-protected. **Judges:** the password is in the testing instructions on
+our Devpost submission.
 
 ### Path A — ChatGPT in-app browser (recommended)
 
