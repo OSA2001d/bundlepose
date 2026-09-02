@@ -8,12 +8,12 @@ custom bouquet — on the same storefront page, and a Cart Transform Function tu
 
 Built for [The WebMCP Challenge](https://webmcp.devpost.com/) (2026).
 
-| | |
-|---|---|
-| 🌸 Live demo store | https://webmcp-challenge-by-meefa.myshopify.com (password: `mfmcp26`) |
-| 📖 Judge's guide (start here) | https://webmcp-challenge-by-meefa.myshopify.com/apps/composer/guide |
-| 🏠 Landing page | https://webmcp-bouquet.fly.dev |
-| 🎬 Demo video | https://youtu.be/IKGAEIm71B0 |
+|                               |                                                                       |
+| ----------------------------- | --------------------------------------------------------------------- |
+| 🌸 Live demo store            | https://webmcp-challenge-by-meefa.myshopify.com (password: `mfmcp26`) |
+| 📖 Judge's guide (start here) | https://webmcp-challenge-by-meefa.myshopify.com/apps/composer/guide   |
+| 🏠 Landing page               | https://webmcp-bouquet.fly.dev                                        |
+| 🎬 Demo video                 | https://youtu.be/zhql_cqvycw                                          |
 
 ## How it works
 
@@ -74,7 +74,7 @@ flowchart LR
 
 **WebMCP implementation.** `extensions/composer-embed/assets/composer.js` registers the tools
 with `document.modelContext.registerTool()` (imperative API) from a Theme App Extension
-*app embed*, i.e. in the storefront's top-level document — ChatGPT does not detect tools
+_app embed_, i.e. in the storefront's top-level document — ChatGPT does not detect tools
 registered inside iframes, which rules out the embedded admin and checkout extensions. Tool
 `execute` handlers run in the normal page context, so they call the store's own domain through
 a signed Shopify App Proxy (`/apps/composer/*`) with no CORS and no second auth system.
@@ -86,17 +86,17 @@ components). Missing config = no-op, so checkout never breaks.
 
 ### The tools
 
-| Tool | Purpose | Writes cart? |
-|---|---|---|
-| `bouquet_get_rules` | Slots (focal / filler / greenery), stem limits, wraps, fees, default budget, lead time | no |
-| `bouquet_list_components` | Today's flowers, filterable by role, color, occasion, pet safety, price, name | no |
-| `bouquet_create` | Start a draft (name, budget, occasion, recipient) → `bundle_id` | no |
-| `bouquet_get_state` | All drafts **including the shopper's hand edits** and `changes_since_cart` | no |
-| `bouquet_add_items` / `bouquet_remove_items` | Edit stems in a draft (inventory-capped) | no |
-| `bouquet_set_wrap` / `bouquet_set_note` | Wrap choice; card message / recipient name | no |
-| `bouquet_validate` | Rules, inventory, budget → `ok`, violations with `{code, message, hint}` | no |
-| `bouquet_commit` | Validate, then add or update the bouquet as one bundled line | **yes** |
-| `bouquet_discard` | Delete a draft | no |
+| Tool                                         | Purpose                                                                                | Writes cart? |
+| -------------------------------------------- | -------------------------------------------------------------------------------------- | ------------ |
+| `bouquet_get_rules`                          | Slots (focal / filler / greenery), stem limits, wraps, fees, default budget, lead time | no           |
+| `bouquet_list_components`                    | Today's flowers, filterable by role, color, occasion, pet safety, price, name          | no           |
+| `bouquet_create`                             | Start a draft (name, budget, occasion, recipient) → `bundle_id`                        | no           |
+| `bouquet_get_state`                          | All drafts **including the shopper's hand edits** and `changes_since_cart`             | no           |
+| `bouquet_add_items` / `bouquet_remove_items` | Edit stems in a draft (inventory-capped)                                               | no           |
+| `bouquet_set_wrap` / `bouquet_set_note`      | Wrap choice; card message / recipient name                                             | no           |
+| `bouquet_validate`                           | Rules, inventory, budget → `ok`, violations with `{code, message, hint}`               | no           |
+| `bouquet_commit`                             | Validate, then add or update the bouquet as one bundled line                           | **yes**      |
+| `bouquet_discard`                            | Delete a draft                                                                         | no           |
 
 ## Try it
 
@@ -110,10 +110,10 @@ The store is password-protected: **`mfmcp26`**.
    in the built-in browser and enter the password.
 4. Switch to **Work mode** and pick **GPT-5.6 Sol** (or Terra). "Site tools" appears in the
    address bar. Default/Auto and Luna do **not** expose site tools.
-5. Ask: *"Make a warm-toned bouquet for my mother's 60th birthday, under $40."*
+5. Ask: _"Make a warm-toned bouquet for my mother's 60th birthday, under $40."_
 6. Open the 🌸 button (bottom right) and change one stem's quantity by hand.
-7. Ask: *"I changed the bouquet by hand — read the latest state and rebalance it within my
-   budget."* Then ask for a card message based on the flowers' meanings, and to add it to the cart.
+7. Ask: _"I changed the bouquet by hand — read the latest state and rebalance it within my
+   budget."_ Then ask for a card message based on the flowers' meanings, and to add it to the cart.
 8. The browser opens the cart: one merged bouquet line. Continue to checkout to see the recipe
    nested underneath.
 
@@ -151,7 +151,7 @@ This is a Shopify app, so it cannot run standalone — it needs a store to live 
 
 1. A **[Shopify Partner account](https://partners.shopify.com/)** (free).
 2. A **development store** created from the Partner Dashboard (free). Any Liquid theme works;
-   the demo uses Shopify's *Horizon* theme.
+   the demo uses Shopify's _Horizon_ theme.
 3. A **Shopify app** record, created for you by `shopify app config link` below (this fills
    `FILL_YOUR_CLIENT_ID` and the URLs in `shopify.app.toml`).
 4. Locally: Node.js ≥ 20.19, [Shopify CLI](https://shopify.dev/docs/apps/tools/cli), and Rust
@@ -173,6 +173,11 @@ shopify app dev            # tunnels to your dev store (set automatically_update
 Then, in the embedded admin app, open **Bouquet setup** and click **Seed products** — this
 creates the demo florist catalog (14 stems with `composer.*` metafields, 2 wraps, an
 arrangement fee, the "Custom Bouquet" merge parent, and 4 regular products) in your dev store.
+
+Product photos are not included in this repository (they were AI-generated for the demo
+store and live on Shopify's CDN). The **Upload images** action reads a local folder that only
+exists on our dev machine — skip it and add your own images in the Shopify admin if you want
+photos.
 
 Cart Transforms only run once the Function is deployed, so:
 
